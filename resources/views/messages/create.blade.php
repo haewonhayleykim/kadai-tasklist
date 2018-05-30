@@ -7,8 +7,8 @@
 
     {!! Form::model($message, ['route' => 'messages.store']) !!}
 
-        {!! Form::label('title', '課題:') !!}
-        {!! Form::text('title') !!}
+        {!! Form::label('status', '課題:') !!}
+        {!! Form::text('status') !!}
 
         {!! Form::label('content', '詳細:') !!}
         {!! Form::text('content') !!}
