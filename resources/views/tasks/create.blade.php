@@ -5,7 +5,7 @@
     <h1>課題新規作成ページ</h1>
 
 
-    {!! Form::model($message, ['route' => 'messages.store']) !!}
+    {!! Form::model($task, ['route' => 'tasks.store']) !!}
 
         {!! Form::label('status', '課題:') !!}
         {!! Form::text('status') !!}

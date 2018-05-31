@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Message;    // add
+use App\Task;    // add
 
-class MessagesController extends Controller
+class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $tasks = Task::all();
 
-        return view('messages.index', [
-            'messages' => $messages,
+        return view('tasks.index', [
+            'tasks' => $tasks,
         ]);
     }
     
@@ -33,10 +33,10 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        $message = new Message;
+        $task = new Task;
 
-        return view('messages.create', [
-            'message' => $message,
+        return view('tasks.create', [
+            'task' => $task,
         ]);
     }
 
@@ -50,14 +50,14 @@ class MessagesController extends Controller
     {
         $this->validate($request, [
             'status' => 'required|max:10',   // add
-            'content' => 'required|max:10',
+            'content' => 'required|max:191',
         ]);
 
 
-        $message = new Message;
-        $message->status = $request->status;    // add
-        $message->content = $request->content;
-        $message->save();
+        $task = new Task;
+        $task->status = $request->status;    // add
+        $task->content = $request->content;
+        $task->save();
 
 
         return redirect('/');
@@ -71,10 +71,10 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        $message = Message::find($id);
+        $task = Task::find($id);
 
-        return view('messages.show', [
-            'message' => $message,
+        return view('tasks.show', [
+            'task' => $task,
         ]);
     }
 
@@ -86,10 +86,10 @@ class MessagesController extends Controller
      */
     public function edit($id)
     {
-         $message = Message::find($id);
+         $task = Task::find($id);
 
-        return view('messages.edit', [
-            'message' => $message,
+        return view('tasks.edit', [
+            'task' => $task,
         ]);
     }
 
@@ -104,14 +104,14 @@ class MessagesController extends Controller
     {
         $this->validate($request, [
             'status' => 'required|max:10',   // add
-            'content' => 'required|max:10',
+            'content' => 'required|max:191',
         ]);
 
 
-        $message = Message::find($id);
-        $message->status = $request->status;    // add
-        $message->content = $request->content;
-        $message->save();
+        $task = Task::find($id);
+        $task->status = $request->status;
+        $task->content = $request->content;
+        $task->save();
 
 
         return redirect('/');
@@ -124,8 +124,8 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        $message = Message::find($id);
-        $message->delete();
+        $task = Task::find($id);
+        $task->delete();
 
         return redirect('/');
     }
