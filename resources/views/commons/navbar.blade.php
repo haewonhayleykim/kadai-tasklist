@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @if (Auth::check())
-                <a class="navbar-brand" href="/tasks">kaedai-tasklist</a>
+                <a class="navbar-brand" href="/tasks">kadai-tasklist</a>
                 @else
                 <a class="navbar-brand" href="/">kadai-tasklist</a>
                 @endif
